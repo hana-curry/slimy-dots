@@ -1,0 +1,4 @@
+- name: Dotfiles setup
+  hosts: all
+  roles:
+    - pacman
