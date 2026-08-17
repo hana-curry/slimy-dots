@@ -1,0 +1,17 @@
+- name: Install hyprland and some dependencies
+  become: true
+  community.general.pacman:
+    name: 
+      - hyprland
+      - qt5-wayland
+      - qt6-wayland
+      - uwsm
+      - xdg-desktop-portal-hyprland
+    state: present
+
+- name: Install the hyprland.lua configuration
+  ansible.builtin.copy:
+    src: hyprland.lua
+    dest: ~/.config/hypr/hyprland.lua
+    force: true
+    
