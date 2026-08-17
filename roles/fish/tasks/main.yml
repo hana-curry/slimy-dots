@@ -1,0 +1,5 @@
+- name: Install fish shell
+  become: true
+  community.general.pacman:
+    name: fish
+    state: present
