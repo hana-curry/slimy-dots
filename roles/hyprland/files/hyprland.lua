@@ -40,6 +40,10 @@ local terminal = "kitty"
 --   hl.exec_cmd("waybar & hyprpaper & firefox")
 -- end)
 
+hl.on("hyprland.start", function ()
+    hl.exec_cmd("hyprctl setcursor 'Bibata-Modern-Ice' ")
+    hl.exec_cmd('gsettings set org.gnome.desktop.interface cursor-theme "Bibata-Modern-Ice"')
+end)
 
 -------------------------------
 ---- ENVIRONMENT VARIABLES ----
@@ -47,8 +51,9 @@ local terminal = "kitty"
 
 -- See https://wiki.hypr.land/Configuring/Advanced-and-Cool/Environment-variables/
 
-hl.env("XCURSOR_SIZE", "20")
-hl.env("HYPRCURSOR_SIZE", "20")
+hl.env("XCURSOR_SIZE", "32")
+hl.env("XCURSOR_THEME", "Bibata-Modern-Ice")
+hl.env("HYPRCURSOR_SIZE", "32")
 
 
 -----------------------
@@ -125,6 +130,7 @@ hl.config({
 
     misc = {
         disable_hyprland_logo = true,
+        force_default_wallpaper = -1
     },
 })
 
