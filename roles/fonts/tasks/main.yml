@@ -1,0 +1,15 @@
+- name: Install fonts
+  become: true
+  community.general.pacman:
+    name:
+      - ttf-iosevka-nerd
+      - inter-font
+      - noto-fonts
+      - noto-fonts-emoji
+      - noto-fonts-cjk
+      - ttf-dejavu
+      - ttf-liberation
+      - ttf-roboto
+      - ttf-opensans
+      - ttf-ubuntu-font-family
+    state: present
