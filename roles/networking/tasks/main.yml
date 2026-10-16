@@ -1,0 +1,12 @@
+- name: Install NetworkManager
+  become: true
+  community.general.pacman:
+    name: networkmanager
+    state: present
+
+- name: Enable and start NetworkManager
+  become: true
+  ansible.builtin.systemd_service:
+    name: NetworkManager
+    enabled: true
+    state: started
