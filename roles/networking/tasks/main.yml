@@ -10,3 +10,10 @@
     name: NetworkManager
     enabled: true
     state: started
+
+- name: Enable NetworkManager's Dispatcher
+  become: true
+  ansible.builtin.systemd_service:
+    name: NetworkManager-dispatcher
+    enabled: true
+    state: started

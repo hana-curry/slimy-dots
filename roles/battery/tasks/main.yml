@@ -1,0 +1,39 @@
+- name: Install upower
+  become: true
+  community.general.pacman:
+    name: upower
+    state: present
+
+- name: Enable and start upower
+  become: true
+  ansible.builtin.systemd_service:
+    name: upower
+    enabled: true
+    state: started
+
+- name: Install TLP & TLP rdw
+  become: true
+  community.general.pacman:
+    name: 
+    - tlp
+    - tlp-rdw
+    state: present
+
+- name: Mask systemd-rfkill Service
+  become: true
+  ansible.builtin.systemd_service:
+    name: systemd-rfkill.service
+    masked: true
+
+- name: Mask systemd-rfkill Socket
+  become: true
+  ansible.builtin.systemd_service:
+    name: systemd-rfkill.socket
+    masked: true
+
+- name: Enable TLP
+  become: true
+  ansible.builtin.systemd_service:
+    name: tlp
+    enabled: true
+    state: started
