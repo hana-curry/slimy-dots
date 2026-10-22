@@ -1,0 +1,11 @@
+- name: Install quickshell
+  become: true
+  community.general.pacman:
+    name: quickshell
+    state: present
+
+- name: Install the quickshell bar
+  ansible.builtin.copy:
+    src: quickshell/
+    dest: ~/.config/quickshell/
+    force: true

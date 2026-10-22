@@ -1,7 +1,43 @@
 - name: Dotfiles setup
   hosts: all
   roles:
-    - pacman
-    - hyprland
-    - fish
-    - cursor
+    - role: pacman
+      tags: [
+        pacman, hyprland, networking,
+        bluetooth, battery, fonts,
+        quickshell, fish, cursor,
+        flatpak, pipewire, sddm
+      ] 
+
+    - role: hyprland
+      tags: hyprland
+
+    - role: networking
+      tags: networking
+
+    - role: bluetooth
+      tags: bluetooth
+
+    - role: battery
+      tags: battery
+
+    - role: fonts
+      tags: [fonts, sddm, quickshell]
+
+    - role: quickshell
+      tags: quickshell
+
+    - role: fish
+      tags: fish
+
+    - role: cursor
+      tags: cursor
+
+    - role: flatpak
+      tags: flatpak
+
+    - role: pipewire
+      tags: pipewire
+
+    - role: sddm
+      tags: sddm

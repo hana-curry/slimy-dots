@@ -1,0 +1,24 @@
+- name: Install flatpak
+  become: true
+  community.general.pacman:
+    name: flatpak
+    state: present
+
+- name: Setup flathub
+  become: true
+  community.general.flatpak_remote:
+    name: flathub
+    flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
+    state: present
+
+- name: Install my default apps
+  become: true
+  community.general.flatpak:
+    name:
+      - com.moonlight_stream.Moonlight
+      - net.ankiweb.Anki
+      - dev.vencord.Vesktop
+      - com.valvesoftware.Steam
+      - org.signal.Signal
+    remote: flathub
+    state: present

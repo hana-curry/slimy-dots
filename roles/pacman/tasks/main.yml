@@ -8,8 +8,30 @@
   become: true
   community.general.pacman:
     name:
+      - cmake
       - git
       - python
       - python-github3py
       - base-devel
     state: present
+
+- name: Install graphic drivers
+  become: true
+  community.general.pacman:
+    name:
+      - vulkan-icd-loader
+      - vulkan-radeon
+      - vulkan-intel
+      
+
+- name: Install some default applications with pacman
+  become: true
+  community.general.pacman:
+    name:
+      - nextcloud-client
+      - dolphin
+      - ark
+      - dolphin-plugins
+      - kio-admin
+      - firefox
+      - awww

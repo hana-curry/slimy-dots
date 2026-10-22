@@ -1,0 +1,9 @@
+[Unit]
+Description=Watch the SlimyGreat wallpaper folder
+
+[Path]
+PathChanged=/usr/share/sddm/themes/SlimyGreat/wallpaper
+Unit=sddm-wallpaper.service
+
+[Install]
+WantedBy=multi-user.target

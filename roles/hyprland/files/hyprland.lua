@@ -43,6 +43,8 @@ local terminal = "kitty"
 hl.on("hyprland.start", function ()
     hl.exec_cmd("hyprctl setcursor 'Bibata-Modern-Ice' ")
     hl.exec_cmd('gsettings set org.gnome.desktop.interface cursor-theme "Bibata-Modern-Ice"')
+    hl.exec_cmd("awww-daemon")
+    hl.exec_cmd("qs")
 end)
 
 -------------------------------
@@ -129,8 +131,8 @@ hl.config({
     },
 
     misc = {
+        disable_splash_rendering = true,
         disable_hyprland_logo = true,
-        force_default_wallpaper = -1
     },
 })
 
@@ -281,6 +283,8 @@ hl.bind(mainMod .. " + down",  hl.dsp.focus({ direction = "down" }))
 
 -- Apps shortcuts
 hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd(terminal))
+hl.bind(mainMod .. " + D",      hl.dsp.exec_cmd("qs ipc call launcher toggle"))
+hl.bind(mainMod .. " + K",      hl.dsp.exec_cmd("qs ipc call wallpapers toggle"))
 
 -- Switch workspaces with mainMod + [0-9]
 -- Move active window to a workspace with mainMod + SHIFT + [0-9]
@@ -357,6 +361,12 @@ hl.window_rule({
 --     no_anim = true,
 -- })
 -- overlayLayerRule:set_enabled(false)
+
+hl.layer_rule({
+    name    = "no-anim-quickshell-panels",
+    match   = { namespace = "^quickshell-(notifications|launcher|wallpapers)$" },
+    no_anim = true,
+})
 
 -- Hyprland-run windowrule
 hl.window_rule({

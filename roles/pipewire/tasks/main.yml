@@ -1,0 +1,10 @@
+- name: Install Pipewire and Wireplumber
+  become: true
+  community.general.pacman:
+    name:
+    - pipewire
+    - pipewire-pulse
+    - pipewire-alsa
+    - pipewire-jack
+    - wireplumber
+    state: present

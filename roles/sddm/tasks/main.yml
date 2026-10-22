@@ -1,0 +1,67 @@
+- name: Install SDDM and theme dependencies
+  become: true
+  community.general.pacman:
+    name:
+      - sddm
+      - qt6-svg
+      - qt6-declarative
+      - qt6-imageformats
+    state: present
+
+- name: Set SDDM as the default display manager
+  become: true
+  ansible.builtin.systemd_service:
+    name: sddm
+    enabled: true
+    force: true
+
+- name: Install the SlimyGreat theme
+  become: true
+  ansible.builtin.copy:
+    src: SlimyGreat/
+    dest: /usr/share/sddm/themes/SlimyGreat/
+    owner: root
+    group: root
+    mode: u=rwX,go=rX
+    force: true
+
+- name: Set SlimyGreat as the SDDM theme
+  become: true
+  community.general.ini_file:
+    path: /etc/sddm.conf
+    section: Theme
+    option: Current
+    value: SlimyGreat
+    no_extra_spaces: true
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: Create the shared wallpaper folder
+  become: true
+  ansible.builtin.file:
+    path: /usr/share/sddm/themes/SlimyGreat/wallpaper
+    state: directory
+    owner: sddm
+    group: sddm
+    mode: '0733'
+
+- name: Install the wallpaper ownership units
+  become: true
+  ansible.builtin.copy:
+    src: "{{ item }}"
+    dest: /etc/systemd/system/{{ item }}
+    owner: root
+    group: root
+    mode: '0644'
+  loop:
+    - sddm-wallpaper.path
+    - sddm-wallpaper.service
+
+- name: Watch the shared wallpaper folder
+  become: true
+  ansible.builtin.systemd_service:
+    name: sddm-wallpaper.path
+    enabled: true
+    state: started
+    daemon_reload: true

@@ -1,0 +1,14 @@
+[Unit]
+Description=Give SlimyGreat wallpapers to sddm:sddm
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/find /usr/share/sddm/themes/SlimyGreat/wallpaper -mindepth 1 -maxdepth 1 \
+    -type f -links 1 ! -name ".*" ( ! -user sddm -o ! -group sddm -o ! -perm 0644 ) \
+    -exec chown -h sddm:sddm {} + -exec chmod 0644 {} +
+ProtectSystem=strict
+ReadWritePaths=/usr/share/sddm/themes/SlimyGreat/wallpaper
+ProtectHome=yes
+PrivateTmp=yes
+PrivateNetwork=yes
+NoNewPrivileges=yes

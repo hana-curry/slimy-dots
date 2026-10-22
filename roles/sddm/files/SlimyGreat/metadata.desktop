@@ -1,0 +1,13 @@
+[SddmGreeterTheme]
+Name=SlimyGreat
+Description=Custom SDDM theme for my dotfiles
+Type=sddm-theme
+Version=1.0
+Website=
+Screenshot=
+MainScript=Main.qml
+ConfigFile=theme.conf
+TranslationsDirectory=translations
+Theme-Id=SlimyGreat
+Theme-API=2.0
+QtVersion=6

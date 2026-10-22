@@ -1,0 +1,6 @@
+myhosts:
+  vars:
+    username: 'hananas'
+  hosts:
+    distant_laptop:
+      ansible_host: 192.168.0.142

@@ -1,0 +1,6 @@
+singleton Theme 1.0 Theme.qml
+Corner 1.0 Corner.qml
+Field 1.0 Field.qml
+IconButton 1.0 IconButton.qml
+LoginPanel 1.0 LoginPanel.qml
+SessionPanel 1.0 SessionPanel.qml
