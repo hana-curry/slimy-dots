@@ -20,5 +20,6 @@
       - dev.vencord.Vesktop
       - com.valvesoftware.Steam
       - org.signal.Signal
+      - com.github.libresprite.LibreSprite
     remote: flathub
     state: present
