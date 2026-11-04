@@ -9,6 +9,11 @@
       - xdg-desktop-portal-hyprland
     state: present
 
+- name: Check that ~/.config/hypr/ directory exist
+  ansible.builtin.file:
+    path: ~/.config/hypr
+    state: directory
+
 - name: Install the hyprland.lua configuration
   ansible.builtin.copy:
     src: hyprland.lua
