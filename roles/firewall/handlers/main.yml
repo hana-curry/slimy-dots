@@ -1,4 +1,5 @@
 - name: Reload firewalld
+  become: true
   ansible.builtin.systemd:
     name: firewalld.service
     state: reloaded
