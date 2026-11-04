@@ -6,7 +6,8 @@
         pacman, hyprland, networking,
         bluetooth, battery, fonts,
         quickshell, fish, flatpak,
-        pipewire, sddm, firewall
+        pipewire, sddm, firewall,
+        kitty
       ] 
 
     - role: hyprland
@@ -41,3 +42,6 @@
 
     - role: firewall
       tags: firewall
+
+    - role: kitty
+      tags: kitty

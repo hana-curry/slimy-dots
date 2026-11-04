@@ -2,6 +2,12 @@
   become: true
   community.general.pacman:
     name: kitty
+    state: present
+
+- name: Check that ~/.config/kitty/ directory exist
+  ansible.builtin.file:
+    path: ~/.config/kitty
+    state: directory
 
 - name: Install the kitty.conf configuration file
   ansible.builtin.copy:
