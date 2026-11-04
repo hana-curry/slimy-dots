@@ -30,9 +30,6 @@
     - role: fish
       tags: fish
 
-    - role: cursor
-      tags: cursor
-
     - role: flatpak
       tags: flatpak
 

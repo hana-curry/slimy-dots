@@ -41,10 +41,11 @@ local terminal = "kitty"
 -- end)
 
 hl.on("hyprland.start", function ()
-    hl.exec_cmd("hyprctl setcursor 'Bibata-Modern-Ice' ")
-    hl.exec_cmd('gsettings set org.gnome.desktop.interface cursor-theme "Bibata-Modern-Ice"')
+    hl.exec_cmd("hyprctl setcursor 'Adwaita' ")
+    hl.exec_cmd('gsettings set org.gnome.desktop.interface cursor-theme "Adwaita"')
     hl.exec_cmd("awww-daemon")
     hl.exec_cmd("qs")
+    hl.exec_cmd("copyq --start-server")
 end)
 
 -------------------------------
