@@ -1,0 +1,9 @@
+- name: install kitty
+  become: true
+  community.general.pacman:
+    name: kitty
+
+- name: Install the kitty.conf configuration file
+  ansible.builtin.copy:
+    src: kitty.conf
+    dest: ~/.config/kitty/kitty.conf
