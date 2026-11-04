@@ -5,8 +5,8 @@
       tags: [
         pacman, hyprland, networking,
         bluetooth, battery, fonts,
-        quickshell, fish, cursor,
-        flatpak, pipewire, sddm
+        quickshell, fish, flatpak,
+        pipewire, sddm, firewall
       ] 
 
     - role: hyprland
@@ -38,3 +38,6 @@
 
     - role: sddm
       tags: sddm
+
+    - role: firewall
+      tags: firewall

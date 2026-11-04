@@ -1,0 +1,21 @@
+- name: Install firewalld
+  become: true
+  community.general.pacman:
+    name: firewalld
+    state: present
+
+- name: Enable and Start firewalld
+  become: true
+  ansible.builtin.systemd_service:
+    name: firewalld.service
+    state: started
+    enabled: true
+
+- name: Enable mdns service in firewalld
+  become: true
+  ansible.posix.firewalld:
+    service: mdns
+    permanent: true
+    state: enabled
+  notify:
+    - Reload firewalld
